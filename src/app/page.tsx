@@ -227,7 +227,7 @@ export default function Home() {
                 New Standard Training
               </div>
               
-              <h1 className="text-5xl md:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black text-white italic leading-[0.85] tracking-tighter uppercase">
+              <h1 className="text-5xl md:text-6xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-white italic leading-[0.85] tracking-tighter uppercase">
                 Stop Existing. <br/>
                 <span className="text-red-600 whitespace-nowrap">Start Conquering.</span>
               </h1>
