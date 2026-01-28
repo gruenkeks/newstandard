@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { CheckCircle2, PlayCircle, Star, ArrowRight, X, ChevronRight } from "lucide-react";
+import { CheckCircle2, PlayCircle, Star, ArrowRight, X, ChevronRight, Menu } from "lucide-react";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
@@ -157,7 +157,7 @@ export default function Home() {
                 <div className="text-center space-y-8 animate-in fade-in zoom-in duration-500">
                   <div className="space-y-4">
                     <h3 className="text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-red-600">The Ascent Begins.</h3>
-                    <p className="text-zinc-600 font-bold leading-relaxed uppercase tracking-tight italic">Your profile has been validated. Enter your best email below to join the <span className="text-red-600 underline">NEWSTANDARD</span> waiting list and receive your first briefing.</p>
+                    <p className="text-zinc-600 font-bold leading-relaxed uppercase tracking-tight italic">Your profile has been validated. Enter your best email below to join the <span className="text-red-600 underline">NEWSTANDARD</span> waiting list.</p>
                   </div>
                   <form onSubmit={(e) => { e.preventDefault(); alert("Welcome to the New Standard."); resetModal(); }} className="space-y-4">
                     <input 
@@ -180,113 +180,94 @@ export default function Home() {
         </div>
       )}
 
-      {/* Navigation */}
-      <nav className="py-8 px-6 md:px-12 flex justify-center items-center">
-        <div className="font-black text-3xl tracking-tighter text-zinc-900 uppercase italic">
-          NEW<span className="text-red-600">STANDARD</span>
-        </div>
-      </nav>
-
-      {/* Hero */}
-      <header className="bg-white text-zinc-900 pt-12 pb-24 px-6 text-center">
-        <div className="max-w-4xl mx-auto space-y-8">
-          <div className="space-y-4">
-            <h2 className="text-red-600 font-black tracking-[0.4em] uppercase text-sm italic">The Protocol</h2>
-            <h1 className="text-4xl md:text-8xl font-black italic leading-[0.85] uppercase tracking-tighter">
-              Stop Existing. <br /> <span className="text-red-600">Start Conquering.</span>
-            </h1>
-          </div>
-          <p className="text-xl md:text-2xl text-zinc-500 max-w-2xl mx-auto font-bold uppercase leading-tight tracking-tight italic">
-            The modern world is designed to make you weak, compliant, and average. Break the cycle and reclaim your biological dominance.
-          </p>
-        </div>
-      </header>
-
-      {/* Video / CTA */}
-      <main className="px-6 pb-24">
-        <div className="max-w-5xl mx-auto space-y-16">
-          <div className="bg-zinc-950 rounded-sm shadow-[0_0_50px_rgba(0,0,0,0.2)] overflow-hidden aspect-video relative group border-8 border-white ring-1 ring-zinc-200">
-            <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all cursor-pointer">
-              <PlayCircle className="w-24 h-24 text-white opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all" />
-            </div>
-            <div className="w-full h-full flex items-center justify-center text-zinc-700 text-xs font-black uppercase tracking-[0.5em]">
-              [ Protocol Briefing ]
-            </div>
-          </div>
-
-          <div className="text-center space-y-10">
-            <div className="space-y-4">
-              <h3 className="text-3xl md:text-5xl font-black uppercase italic tracking-tighter">
-                Enter The New Standard
-              </h3>
-              <p className="text-zinc-500 max-w-xl mx-auto font-bold uppercase tracking-tight italic">
-                The gates are closing. This is your final briefing. Secure your spot in the brotherhood or stay behind.
-              </p>
-            </div>
-            
-            <button 
-              onClick={() => setShowModal(true)}
-              className="inline-flex items-center gap-4 bg-red-600 hover:bg-red-700 text-white font-black py-8 px-16 rounded-sm text-2xl shadow-[0_20px_40px_rgba(220,38,38,0.3)] transform transition hover:scale-105 uppercase italic tracking-tighter"
-            >
-              I'M READY TO CONQUER <ArrowRight className="w-8 h-8" />
-            </button>
-
-            <div className="flex justify-center items-center gap-8 pt-8 grayscale opacity-50">
-              <div className="flex gap-1">
-                {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-zinc-900" />)}
-              </div>
-              <p className="text-xs font-black uppercase tracking-widest text-zinc-900">3,800+ MEN ALREADY ON THE ASCENT</p>
-            </div>
-          </div>
-        </div>
-      </main>
-
-      {/* Pruned Benefits */}
-      <section className="bg-zinc-50 py-24 border-y border-zinc-200">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-x-16 gap-y-12">
-            {[
-              "Weaponized Testosterone Protocol",
-              "Aesthetic Dominance Framework",
-              "Unbreakable Discipline Systems",
-              "Elite Performance War-Map"
-            ].map((benefit, i) => (
-              <div key={i} className="flex gap-6 items-center">
-                <CheckCircle2 className="w-8 h-8 text-red-600 flex-shrink-0" />
-                <p className="text-xl text-zinc-900 font-black uppercase italic tracking-tighter leading-none">{benefit}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-24 bg-red-600 text-white text-center">
-        <div className="max-w-3xl mx-auto px-6 space-y-10">
-          <h2 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter leading-[0.9]">THE CHOICE IS YOURS: <br /> EVOLVE OR DECAY.</h2>
-          <button 
-            onClick={() => setShowModal(true)}
-            className="bg-white text-red-600 font-black py-8 px-16 rounded-sm text-2xl shadow-2xl transform transition hover:scale-105 uppercase italic tracking-tighter"
-          >
-            I'M READY TO CONQUER
-          </button>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-white text-zinc-400 py-20 px-6 text-center text-[10px] uppercase tracking-[0.3em] font-black">
-        <div className="max-w-6xl mx-auto space-y-8">
-          <div className="font-black text-xl tracking-tighter text-zinc-900 italic">
+      {/* Hero Section Structure from Heartbeat Consulting */}
+      <div className="relative min-h-screen bg-black overflow-hidden flex flex-col">
+        {/* Minimal Nav */}
+        <nav className="relative z-20 flex justify-between items-center px-8 py-6 max-w-[1400px] mx-auto w-full">
+           <div className="font-black text-2xl tracking-tighter text-white uppercase italic">
             NEW<span className="text-red-600">STANDARD</span>
           </div>
-          <p>&copy; 2026 NEWSTANDARD. ALL RIGHTS RESERVED.</p>
-          <div className="flex justify-center gap-8">
-            <a href="#" className="hover:text-zinc-900 transition-colors">Privacy</a>
-            <a href="#" className="hover:text-zinc-900 transition-colors">Terms</a>
-            <a href="#" className="hover:text-zinc-900 transition-colors">Contact</a>
+          <div className="hidden md:block text-xs font-bold uppercase tracking-[0.2em] text-zinc-500">
+            Exclusive Training for Men
+          </div>
+        </nav>
+
+        {/* Main Content Area */}
+        <main className="flex-grow flex items-center justify-center relative z-10 px-6 py-12 lg:py-0">
+          {/* Background Grid Pattern (Subtle & Fixed) */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#222222_1px,transparent_1px),linear-gradient(to_bottom,#222222_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] opacity-[0.2] pointer-events-none" />
+          
+          <div className="max-w-[1400px] w-full mx-auto grid lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+            
+            {/* Left Column: Massive Video Element (Spans 7 columns) */}
+            <div className="lg:col-span-7 relative group w-full aspect-video bg-zinc-950 rounded-xl overflow-hidden border border-zinc-800 shadow-[0_0_100px_rgba(220,38,38,0.1)] cursor-pointer hover:border-red-600/50 transition-all duration-300">
+               <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-red-600 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity rounded-full scale-150" />
+                  <PlayCircle className="w-24 h-24 text-white relative z-10 drop-shadow-2xl group-hover:scale-110 transition-transform duration-300" />
+                </div>
+               </div>
+               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent pt-20 flex justify-between items-end">
+                 <div>
+                   <div className="flex items-center gap-2 mb-2">
+                     <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse" />
+                     <span className="text-red-500 font-black uppercase tracking-widest text-[10px]">Restricted Access</span>
+                   </div>
+                   <div className="text-white font-bold text-lg leading-tight">The Primal Protocol Briefing</div>
+                 </div>
+                 <div className="bg-white/10 backdrop-blur-md border border-white/10 px-3 py-1 rounded text-xs font-mono text-white/90">
+                   12:45
+                 </div>
+               </div>
+            </div>
+
+            {/* Right Column: Copy & CTA (Spans 5 columns) */}
+            <div className="lg:col-span-5 flex flex-col justify-center space-y-8 text-left relative z-20">
+              <div className="inline-flex self-start items-center gap-2 bg-zinc-900/80 border border-zinc-800 backdrop-blur-sm rounded-sm px-3 py-1.5 text-[10px] font-black text-zinc-400 uppercase tracking-[0.2em] mb-2">
+                New Standard Training
+              </div>
+              
+              <h1 className="text-5xl md:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black text-white italic leading-[0.85] tracking-tighter uppercase">
+                Stop Existing. <br/>
+                <span className="text-red-600 whitespace-nowrap">Start Conquering.</span>
+              </h1>
+              
+              <p className="text-lg text-zinc-400 font-medium leading-relaxed max-w-md border-l-2 border-zinc-800 pl-6">
+                The modern world is designed to make you weak, compliant, and average. We help men reclaim their biological dominance and build a legacy.
+              </p>
+
+              <div className="pt-4">
+                <button 
+                  onClick={() => setShowModal(true)}
+                  className="w-full bg-red-600 hover:bg-red-700 text-white font-black py-6 px-8 rounded-sm text-xl shadow-[0_10px_40px_rgba(220,38,38,0.3)] transform transition hover:scale-[1.02] active:scale-[0.98] uppercase italic tracking-tighter flex items-center justify-center gap-3 group"
+                >
+                  I'M READY TO CONQUER 
+                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                </button>
+                <div className="mt-4 flex items-center gap-2 text-[10px] text-zinc-500 font-bold uppercase tracking-widest">
+                  <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
+                  Join 3,800+ Men On The Path
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </main>
+
+        {/* Footer Logos */}
+        <div className="relative z-10 py-12 border-t border-zinc-900 bg-black">
+          <div className="max-w-[1400px] mx-auto px-6 text-center">
+             <p className="text-zinc-600 text-xs font-bold uppercase tracking-widest mb-8">As seen in</p>
+             <div className="flex flex-wrap justify-center gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-500">
+               {/* Placeholders for logos, styled as simple text for now or replace with images */}
+               <h3 className="text-2xl font-black text-white italic">MEN'S HEALTH</h3>
+               <h3 className="text-2xl font-black text-white italic">FORBES</h3>
+               <h3 className="text-2xl font-black text-white italic">GQ</h3>
+               <h3 className="text-2xl font-black text-white italic">ROGUE</h3>
+             </div>
           </div>
         </div>
-      </footer>
+      </div>
     </div>
   );
 }
