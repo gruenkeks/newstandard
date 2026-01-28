@@ -195,7 +195,7 @@ export default function Home() {
         {/* Main Content Area */}
         <main className="flex-grow flex items-center justify-center relative z-10 px-6 py-12 lg:py-0">
           {/* Background Grid Pattern (Subtle & Fixed) */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(220,38,38,0.2)_1px,transparent_1px),linear-gradient(to_bottom,rgba(220,38,38,0.2)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] opacity-[0.4] pointer-events-none" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(220,38,38,0.3)_1px,transparent_1px),linear-gradient(to_bottom,rgba(220,38,38,0.3)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_40%,transparent_100%)] opacity-[0.6] pointer-events-none" />
           
           <div className="max-w-[1400px] w-full mx-auto grid lg:grid-cols-12 gap-12 lg:gap-24 items-center">
             
