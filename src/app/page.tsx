@@ -254,19 +254,6 @@ export default function Home() {
           </div>
         </main>
 
-        {/* Footer Logos */}
-        <div className="relative z-10 py-12 border-t border-zinc-900 bg-black">
-          <div className="max-w-[1400px] mx-auto px-6 text-center">
-             <p className="text-zinc-600 text-xs font-bold uppercase tracking-widest mb-8">As seen in</p>
-             <div className="flex flex-wrap justify-center gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-500">
-               {/* Placeholders for logos, styled as simple text for now or replace with images */}
-               <h3 className="text-2xl font-black text-white italic">MEN'S HEALTH</h3>
-               <h3 className="text-2xl font-black text-white italic">FORBES</h3>
-               <h3 className="text-2xl font-black text-white italic">GQ</h3>
-               <h3 className="text-2xl font-black text-white italic">ROGUE</h3>
-             </div>
-          </div>
-        </div>
       </div>
     </div>
   );
