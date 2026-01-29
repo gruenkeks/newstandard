@@ -349,7 +349,7 @@ export default function Home() {
       {/* Hero Section Structure from Heartbeat Consulting */}
       <div className="relative min-h-screen bg-black overflow-hidden flex flex-col">
         {/* Minimal Nav */}
-        <nav className="relative z-20 flex justify-between items-center px-8 py-6 max-w-[1400px] mx-auto w-full">
+          <nav className="relative z-20 flex justify-between items-center px-4 md:px-8 py-6 max-w-[1400px] mx-auto w-full">
            <div className="font-black text-2xl tracking-tighter text-white uppercase italic">
             NEW<span className="text-red-600">STANDARD</span>
           </div>
@@ -359,11 +359,11 @@ export default function Home() {
         </nav>
 
         {/* Main Content Area */}
-        <main className="flex-grow flex items-center justify-center relative z-10 px-6 py-12 lg:py-0">
+        <main className="flex-grow flex items-center justify-center relative z-10 px-4 md:px-6 py-12 lg:py-0">
           {/* Background Grid Pattern (Subtle & Fixed) */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(220,38,38,0.3)_1px,transparent_1px),linear-gradient(to_bottom,rgba(220,38,38,0.3)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_40%,transparent_100%)] opacity-[0.6] pointer-events-none" />
           
-          <div className="max-w-[1400px] w-full mx-auto grid lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+          <div className="max-w-[1400px] w-full mx-auto grid lg:grid-cols-12 gap-8 lg:gap-24 items-center">
             
             {/* Left Column: Massive Video Element (Spans 7 columns) */}
             <div className="lg:col-span-7 relative group w-full aspect-video bg-zinc-950 rounded-xl overflow-hidden border border-zinc-800 shadow-[0_0_100px_rgba(220,38,38,0.1)] cursor-pointer hover:border-red-600/50 transition-all duration-300">
@@ -393,9 +393,9 @@ export default function Home() {
                 New Standard Training
               </div>
               
-              <h1 className="text-5xl md:text-6xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-white italic leading-[0.85] tracking-tighter uppercase">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-white italic leading-[0.85] tracking-tighter uppercase">
                 Stop Existing. <br/>
-                <span className="text-red-600 whitespace-nowrap">Start Conquering.</span>
+                <span className="text-red-600">Start Conquering.</span>
               </h1>
               
               <p className="text-lg text-zinc-400 font-medium leading-relaxed max-w-md border-l-2 border-zinc-800 pl-6">
@@ -405,7 +405,7 @@ export default function Home() {
               <div className="pt-4">
                 <button 
                   onClick={() => setShowModal(true)}
-                  className="w-full bg-red-600 hover:bg-red-700 text-white font-black py-6 px-8 rounded-sm text-xl shadow-[0_10px_40px_rgba(220,38,38,0.3)] transform transition hover:scale-[1.02] active:scale-[0.98] uppercase italic tracking-tighter flex items-center justify-center gap-3 group"
+                  className="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 md:py-6 px-4 md:px-8 rounded-sm text-lg md:text-xl shadow-[0_10px_40px_rgba(220,38,38,0.3)] transform transition hover:scale-[1.02] active:scale-[0.98] uppercase italic tracking-tighter flex items-center justify-center gap-2 md:gap-3 group"
                 >
                   BOOK A FREE STRATEGY CALL 
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
