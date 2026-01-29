@@ -376,7 +376,7 @@ export default function Home() {
               </h1>
               
               <p className="text-lg text-zinc-400 font-medium leading-relaxed max-w-md border-l-2 border-zinc-800 pl-6">
-                The modern world is designed to make you weak, compliant, and average. We help men reclaim their biological dominance and build a legacy.
+                The modern world is designed to make you weak, compliant, and average. We help men forge an elite physique, unbreakable discipline, and true sovereignty.
               </p>
 
               <div className="pt-4">
