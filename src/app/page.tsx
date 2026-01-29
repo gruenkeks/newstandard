@@ -384,7 +384,7 @@ export default function Home() {
                   onClick={() => setShowModal(true)}
                   className="w-full bg-red-600 hover:bg-red-700 text-white font-black py-6 px-8 rounded-sm text-xl shadow-[0_10px_40px_rgba(220,38,38,0.3)] transform transition hover:scale-[1.02] active:scale-[0.98] uppercase italic tracking-tighter flex items-center justify-center gap-3 group"
                 >
-                  I'M READY TO CONQUER 
+                  BOOK A FREE STRATEGY CALL 
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                 </button>
                 <div className="mt-4 flex items-center gap-2 text-[10px] text-zinc-500 font-bold uppercase tracking-widest">
