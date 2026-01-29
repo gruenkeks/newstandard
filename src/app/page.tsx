@@ -55,7 +55,7 @@ export default function Home() {
       options: [
         "Yes, absolutely. I invest in myself.",
         "It depends on the offer.",
-        "No, I am only looking for free information."
+        "I'm not ready to spend money right now to change my situation"
       ],
       allowOther: false,
     },
@@ -86,7 +86,7 @@ export default function Home() {
     
     // Disqualification Check
     if (questions[step].id === "investment") {
-      if (finalSelections.some(s => s.includes("free information"))) {
+      if (finalSelections.some(s => s.includes("not ready to spend money"))) {
         setIsDisqualified(true);
       }
     }
