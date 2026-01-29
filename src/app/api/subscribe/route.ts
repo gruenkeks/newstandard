@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { email, answers } = body;
+    const { email, answers = {} } = body;
 
     if (!email) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
@@ -11,6 +11,14 @@ export async function POST(request: Request) {
 
     const API_KEY = process.env.KIT_API_KEY;
     const FORM_ID = process.env.KIT_FORM_ID;
+
+    // debug logs
+    console.log('Attempting subscription:', { 
+      email, 
+      hasApiKey: !!API_KEY, 
+      hasFormId: !!FORM_ID,
+      formId: FORM_ID 
+    });
 
     if (!API_KEY || !FORM_ID) {
       console.error('Kit API credentials missing');
@@ -43,6 +51,8 @@ export async function POST(request: Request) {
     });
 
     const data = await response.json();
+    
+    console.log('Kit API Response:', data);
 
     if (!response.ok) {
       console.error('Kit API Error:', data);
