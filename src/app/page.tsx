@@ -331,9 +331,9 @@ export default function Home() {
                           config={{
                             layout: 'month_view', 
                             theme: 'light',
-                            name: answers['name'] ? answers['name'][0] : undefined,
-                            email: answers['email'] ? answers['email'][0] : undefined,
-                            notes: `Goal: ${answers['goal']?.join(', ')}\nExperience: ${answers['experience']?.join(', ')}\nChallenge: ${answers['challenge']?.join(', ')}\nInvestment: ${answers['investment']?.join(', ')}`
+                            ...(answers['name'] && answers['name'][0] ? { name: answers['name'][0] } : {}),
+                            ...(answers['email'] && answers['email'][0] ? { email: answers['email'][0] } : {}),
+                            notes: `Goal: ${answers['goal']?.join(', ') || ''}\nExperience: ${answers['experience']?.join(', ') || ''}\nChallenge: ${answers['challenge']?.join(', ') || ''}\nInvestment: ${answers['investment']?.join(', ') || ''}`
                           }}
                         />
                       </div>
