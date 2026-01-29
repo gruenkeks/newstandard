@@ -46,7 +46,7 @@ export default function Home() {
     {
       id: "challenge",
       question: "What is stopping you from seeing results?",
-      options: ["I Don't Have A Clear Plan", "Lack Of Time", "Staying Consistent"],
+      options: ["I Don't Have A Clear Plan", "Lack Of Time", "Staying Consistent", "Not Sure"],
       allowOther: true,
     },
     {
