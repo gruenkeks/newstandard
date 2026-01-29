@@ -1,34 +1,51 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CheckCircle2, PlayCircle, Star, ArrowRight, X, ChevronRight, Menu } from "lucide-react";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
+  const [showExitModal, setShowExitModal] = useState(false);
+  const [hasShownExitModal, setHasShownExitModal] = useState(false);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string[]>>({});
   const [tempSelections, setTempSelections] = useState<string[]>([]);
   const [otherValue, setOtherValue] = useState("");
   const [showOtherInput, setShowOtherInput] = useState(false);
 
+  // Exit Intent Hook
+  useEffect(() => {
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (e.clientY <= 0 && !hasShownExitModal && !showModal) {
+        setShowExitModal(true);
+        setHasShownExitModal(true);
+      }
+    };
+
+    document.addEventListener("mouseleave", handleMouseLeave);
+    return () => {
+      document.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, [hasShownExitModal, showModal]);
+
   const questions = [
     {
       id: "goal",
-      question: "What is your primary mission?",
-      options: ["Dominate Your Physique", "Forging Unbreakable Discipline", "Reclaiming Biological Dominance"],
+      question: "What is your main goal right now?",
+      options: ["Build Muscle & Lose Fat", "Build Better Habits & Discipline", "Optimize Health & Energy"],
       allowOther: true,
     },
     {
       id: "experience",
-      question: "How long have you settled for average?",
-      options: ["Just Starting The Ascent", "1-2 Years Of Stagnation", "3+ Years / Seeking Elite Level"],
+      question: "How long have you been training?",
+      options: ["I'm Just Starting", "1-2 Years", "3+ Years"],
       allowOther: false,
     },
     {
       id: "challenge",
-      question: "What is your #1 excuse for failure?",
-      options: ["Lack of a Proven War-Map", "Wasted Time & Energy", "Weak Environment"],
+      question: "What is stopping you from seeing results?",
+      options: ["I Don't Have A Clear Plan", "Lack Of Time", "Staying Consistent"],
       allowOther: true,
     },
   ];
@@ -70,6 +87,53 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 selection:bg-red-100 selection:text-red-900">
+      {/* Exit Intent Modal */}
+      {showExitModal && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md transition-all animate-in fade-in duration-300">
+          <div className="bg-zinc-950 rounded-xl shadow-2xl max-w-lg w-full p-8 relative border-2 border-red-600 animate-in zoom-in-95 duration-300">
+            <button 
+              onClick={() => setShowExitModal(false)}
+              className="absolute top-4 right-4 text-zinc-500 hover:text-white transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            
+            <div className="text-center space-y-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-600/10 border border-red-600/20 mb-2">
+                <span className="text-3xl">⚠️</span>
+              </div>
+              
+              <div className="space-y-2">
+                <h3 className="text-3xl font-black text-white uppercase italic tracking-tighter">
+                  Wait! Don't Leave Empty Handed.
+                </h3>
+                <p className="text-zinc-400 font-medium leading-relaxed">
+                  You're about to miss out on the <span className="text-white font-bold">Primal Protocol Briefing</span>. This training reveals the exact system used by 3,800+ men to reclaim their biological dominance.
+                </p>
+              </div>
+
+              <div className="pt-2 space-y-3">
+                <button 
+                  onClick={() => {
+                    setShowExitModal(false);
+                    setShowModal(true);
+                  }}
+                  className="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-sm text-lg shadow-lg uppercase italic tracking-tighter transition-all hover:scale-[1.02]"
+                >
+                  GET FREE ACCESS NOW
+                </button>
+                <button 
+                  onClick={() => setShowExitModal(false)}
+                  className="text-zinc-600 text-xs font-bold uppercase tracking-widest hover:text-zinc-400 transition-colors"
+                >
+                  No thanks, I prefer staying average
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Multi-Step Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-all">
@@ -107,7 +171,7 @@ export default function Home() {
                             {tempSelections.includes(option) && <CheckCircle2 className="w-4 h-4 text-white" />}
                           </div>
                           {option}
-                        </div>
+        </div>
                       </button>
                     ))}
                     
@@ -188,7 +252,7 @@ export default function Home() {
             NEW<span className="text-red-600">STANDARD</span>
           </div>
           <div className="hidden md:block text-xs font-bold uppercase tracking-[0.2em] text-zinc-500">
-            Exclusive Training for Men
+            
           </div>
         </nav>
 
@@ -211,9 +275,9 @@ export default function Home() {
                  <div>
                    <div className="flex items-center gap-2 mb-2">
                      <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse" />
-                     <span className="text-red-500 font-black uppercase tracking-widest text-[10px]">Restricted Access</span>
+                     
                    </div>
-                   <div className="text-white font-bold text-lg leading-tight">The Primal Protocol Briefing</div>
+                   <div className="text-white font-bold text-lg leading-tight">The New Standard Briefing</div>
                  </div>
                  <div className="bg-white/10 backdrop-blur-md border border-white/10 px-3 py-1 rounded text-xs font-mono text-white/90">
                    12:45
@@ -251,8 +315,8 @@ export default function Home() {
               </div>
             </div>
 
-          </div>
-        </main>
+        </div>
+      </main>
 
       </div>
     </div>
