@@ -297,13 +297,25 @@ export default function Home() {
                 <div className="text-center space-y-8 animate-in fade-in zoom-in duration-500 h-full flex flex-col justify-center">
                   {isDisqualified ? (
                     <div className="space-y-6">
-                      <h3 className="text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-zinc-400">Not A Good Fit.</h3>
+                      <h3 className="text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-zinc-400">Join The Insider List.</h3>
                       <p className="text-zinc-600 font-bold leading-relaxed uppercase tracking-tight italic">
-                        Based on your answers, you are not ready for the New Standard Protocol. We only work with men who are ready to invest in their transformation.
+                        The full protocol requires a significant commitment. However, you can still get valuable insights, training updates, and exclusive tips by joining our free insider newsletter.
                       </p>
-                      <a href="https://youtube.com" className="inline-block text-red-600 font-black uppercase tracking-widest hover:underline">
-                        Watch Free Content Instead
-                      </a>
+                      
+                      <form onSubmit={handleSubscribe} className="space-y-4 max-w-sm mx-auto">
+                        <input 
+                          type="email" 
+                          required 
+                          placeholder="Your E-Mail" 
+                          className="w-full px-6 py-5 border-2 border-zinc-100 focus:border-red-600 outline-none text-xl font-black uppercase italic transition-all bg-zinc-50"
+                        />
+                        <button 
+                          disabled={isSubmitting}
+                          className="w-full bg-zinc-900 hover:bg-black text-white font-black py-6 rounded-sm text-xl shadow-lg transition-all uppercase italic tracking-tighter disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                          {isSubmitting ? "PROCESSING..." : "JOIN FOR FREE"}
+                        </button>
+                      </form>
                     </div>
                   ) : (
                     <div className="w-full h-[600px] overflow-hidden rounded-sm border-2 border-zinc-100">
