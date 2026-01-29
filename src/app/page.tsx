@@ -318,16 +318,16 @@ export default function Home() {
                       </form>
                     </div>
                   ) : (
-                    <div className="w-full h-[600px] overflow-hidden rounded-sm border-2 border-zinc-100 flex flex-col">
-                      <div className="bg-zinc-50 p-4 border-b border-zinc-200 text-center">
+                    <div className="w-full h-[700px] md:h-[800px] overflow-hidden rounded-sm border-2 border-zinc-100 flex flex-col bg-white">
+                      <div className="bg-zinc-50 p-4 border-b border-zinc-200 text-center flex-shrink-0">
                         <h3 className="text-lg font-black uppercase italic tracking-tighter text-zinc-900">
                           Book your free 15 minute strategy call now:
                         </h3>
                       </div>
-                      <div className="flex-grow">
+                      <div className="flex-grow relative w-full h-full">
                         <Cal 
                           calLink="dennis-simontowsky-myvg0r/free-15-minute-strategy-call"
-                          style={{width:"100%",height:"100%",overflow:"scroll"}}
+                          style={{width:"100%",height:"100%",overflow:"auto"}}
                           config={{
                             layout: 'month_view', 
                             theme: 'light',
