@@ -51,7 +51,7 @@ export default function Home() {
     },
     {
       id: "investment",
-      question: "If you could have your dream life situation 100% guaranteed, would you be willing to invest a big amount?",
+      question: "If you could have your dream life situation 100% guaranteed, would you be willing to invest significantly?",
       options: [
         "Yes, absolutely. I invest in myself.",
         "It depends on the offer.",
