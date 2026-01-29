@@ -187,7 +187,7 @@ export default function Home() {
                   <input 
                     type="email" 
                     required 
-                    placeholder="Your best email address" 
+                    placeholder="Your E-Mail" 
                     className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-sm text-white placeholder:text-zinc-600 focus:border-red-600 outline-none transition-all"
                   />
                   <button 
