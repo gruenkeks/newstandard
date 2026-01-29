@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "New Standard | The #1 Framework for Coaches",
+  title: "Join The New Standard",
   description: "Learn how to scale your coaching business to $10k/mo with the New Standard Framework.",
 };
 

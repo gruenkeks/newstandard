@@ -410,10 +410,6 @@ export default function Home() {
                   BOOK A FREE STRATEGY CALL 
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                 </button>
-                <div className="mt-4 flex items-center gap-2 text-[10px] text-zinc-500 font-bold uppercase tracking-widest">
-                  <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
-                  Join 3,800+ Men On The Path
-                </div>
               </div>
             </div>
 
