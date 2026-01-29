@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { CheckCircle2, PlayCircle, Star, ArrowRight, X, ChevronRight, Menu } from "lucide-react";
+import Cal, { getCalApi } from "@calcom/embed-react";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
@@ -72,6 +73,51 @@ export default function Home() {
     setOtherValue("");
     setShowOtherInput(false);
     setStep(step + 1);
+  };
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDisqualified, setIsDisqualified] = useState(false);
+
+  // Initialize Cal.com
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi();
+      cal("ui", { 
+        styles: { branding: { brandColor: "#DC2626" } },
+        hideEventTypeDetails: false,
+        layout: "month_view"
+      });
+    })();
+  }, []);
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Get email from form
+    const emailInput = (e.target as HTMLFormElement).querySelector('input[type="email"]') as HTMLInputElement;
+    const email = emailInput.value;
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, answers }),
+      });
+
+      if (response.ok) {
+        alert("Welcome to the New Standard. Check your inbox.");
+        resetModal();
+        setShowExitModal(false);
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const resetModal = () => {
@@ -149,9 +195,9 @@ export default function Home() {
               {step < questions.length ? (
                 <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
                   <div className="space-y-2">
-                    <p className="text-red-600 font-black uppercase tracking-[0.2em] text-xs italic">Step {step + 1} of {questions.length + 1}</p>
+                    <p className="text-red-600 font-black uppercase tracking-[0.2em] text-xs italic">Step {step + 1} of {questions.length}</p>
                     <h3 className="text-2xl md:text-3xl font-black uppercase italic leading-tight">{questions[step].question}</h3>
-                    <p className="text-zinc-400 text-xs font-bold uppercase tracking-widest italic">Select at least one option</p>
+                    <p className="text-zinc-400 text-xs font-bold uppercase tracking-widest italic">Select one option</p>
                   </div>
                   <div className="grid gap-3">
                     {questions[step].options.map((option) => (
@@ -171,7 +217,7 @@ export default function Home() {
                             {tempSelections.includes(option) && <CheckCircle2 className="w-4 h-4 text-white" />}
                           </div>
                           {option}
-        </div>
+                        </div>
                       </button>
                     ))}
                     
@@ -218,25 +264,26 @@ export default function Home() {
                   </button>
                 </div>
               ) : (
-                <div className="text-center space-y-8 animate-in fade-in zoom-in duration-500">
-                  <div className="space-y-4">
-                    <h3 className="text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-red-600">The Ascent Begins.</h3>
-                    <p className="text-zinc-600 font-bold leading-relaxed uppercase tracking-tight italic">Your profile has been validated. Enter your best email below to join the <span className="text-red-600 underline">NEWSTANDARD</span> waiting list.</p>
-                  </div>
-                  <form onSubmit={(e) => { e.preventDefault(); alert("Welcome to the New Standard."); resetModal(); }} className="space-y-4">
-                    <input 
-                      type="email" 
-                      required 
-                      placeholder="Your E-Mail" 
-                      className="w-full px-6 py-5 border-2 border-zinc-100 focus:border-red-600 outline-none text-xl font-black uppercase italic transition-all bg-zinc-50"
-                    />
-                    <button className="w-full bg-red-600 hover:bg-red-700 text-white font-black py-6 rounded-sm text-xl shadow-lg transition-all uppercase italic tracking-tighter">
-                      JOIN THE BROTHERHOOD
-                    </button>
-                  </form>
-                  <p className="text-[10px] text-zinc-400 font-black uppercase tracking-[0.2em]">
-                    WE GUARD YOUR PRIVACY. WE DESPISE SPAM.
-                  </p>
+                <div className="text-center space-y-8 animate-in fade-in zoom-in duration-500 h-full flex flex-col justify-center">
+                  {isDisqualified ? (
+                    <div className="space-y-6">
+                      <h3 className="text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-zinc-400">Not A Good Fit.</h3>
+                      <p className="text-zinc-600 font-bold leading-relaxed uppercase tracking-tight italic">
+                        Based on your answers, you are not ready for the New Standard Protocol. We only work with men who are ready to invest in their transformation.
+                      </p>
+                      <a href="https://youtube.com" className="inline-block text-red-600 font-black uppercase tracking-widest hover:underline">
+                        Watch Free Content Instead
+                      </a>
+                    </div>
+                  ) : (
+                    <div className="w-full h-[600px] overflow-hidden rounded-sm border-2 border-zinc-100">
+                      <Cal 
+                        calLink="dennis-simontowsky-myvg0r/free-15-minute-strategy-call"
+                        style={{width:"100%",height:"100%",overflow:"scroll"}}
+                        config={{layout: 'month_view', theme: 'light'}}
+                      />
+                    </div>
+                  )}
                 </div>
               )}
             </div>
