@@ -182,24 +182,22 @@ export default function Home() {
               </div>
 
               <div className="pt-2 space-y-3">
-                <button 
-                  onClick={() => {
-                    setShowExitModal(false);
-                    // We might want to open a simpler email modal here or just the main one
-                    // For now, let's open the main modal but maybe we should have a simple email capture?
-                    // Given the prompt "ask for their email", let's assume they want to capture it here.
-                    // But to keep it simple with existing flow, let's direct them to the main flow 
-                    // OR we can make this button open a simple email input state.
-                    // Let's reuse the main modal logic for now but maybe skip to email?
-                    // Simpler: Just open the main modal as "Get Access" implies starting the process.
-                    // The prompt says "ask for their email... to receive news". 
-                    // Let's change the button text to match the new intent.
-                    setShowModal(true);
-                  }}
-                  className="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-sm text-lg shadow-lg uppercase italic tracking-tighter transition-all hover:scale-[1.02]"
-                >
-                  SIGN UP FOR UPDATES
-                </button>
+                {/* Simple Email Capture Form inside Exit Intent */}
+                <form onSubmit={handleSubscribe} className="space-y-3">
+                  <input 
+                    type="email" 
+                    required 
+                    placeholder="Your best email address" 
+                    className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-sm text-white placeholder:text-zinc-600 focus:border-red-600 outline-none transition-all"
+                  />
+                  <button 
+                    disabled={isSubmitting}
+                    className="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-sm text-lg shadow-lg uppercase italic tracking-tighter transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? "JOINING..." : "SIGN UP FOR UPDATES"}
+                  </button>
+                </form>
+                
                 <button 
                   onClick={() => setShowExitModal(false)}
                   className="text-zinc-600 text-xs font-bold uppercase tracking-widest hover:text-zinc-400 transition-colors"
