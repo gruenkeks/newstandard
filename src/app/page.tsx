@@ -194,7 +194,7 @@ export default function Home() {
                     disabled={isSubmitting}
                     className="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-sm text-lg shadow-lg uppercase italic tracking-tighter transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {isSubmitting ? "JOINING..." : "SIGN UP FOR UPDATES"}
+                    {isSubmitting ? "JOINING..." : "SIGN UP"}
                   </button>
                 </form>
                 
