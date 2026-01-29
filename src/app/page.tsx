@@ -318,12 +318,25 @@ export default function Home() {
                       </form>
                     </div>
                   ) : (
-                    <div className="w-full h-[600px] overflow-hidden rounded-sm border-2 border-zinc-100">
-                      <Cal 
-                        calLink="dennis-simontowsky-myvg0r/free-15-minute-strategy-call"
-                        style={{width:"100%",height:"100%",overflow:"scroll"}}
-                        config={{layout: 'month_view', theme: 'light'}}
-                      />
+                    <div className="w-full h-[600px] overflow-hidden rounded-sm border-2 border-zinc-100 flex flex-col">
+                      <div className="bg-zinc-50 p-4 border-b border-zinc-200 text-center">
+                        <h3 className="text-lg font-black uppercase italic tracking-tighter text-zinc-900">
+                          Book your free 15 minute strategy call now:
+                        </h3>
+                      </div>
+                      <div className="flex-grow">
+                        <Cal 
+                          calLink="dennis-simontowsky-myvg0r/free-15-minute-strategy-call"
+                          style={{width:"100%",height:"100%",overflow:"scroll"}}
+                          config={{
+                            layout: 'month_view', 
+                            theme: 'light',
+                            name: answers['name'] ? answers['name'][0] : undefined,
+                            email: answers['email'] ? answers['email'][0] : undefined,
+                            notes: `Goal: ${answers['goal']?.join(', ')}\nExperience: ${answers['experience']?.join(', ')}\nChallenge: ${answers['challenge']?.join(', ')}\nInvestment: ${answers['investment']?.join(', ')}`
+                          }}
+                        />
+                      </div>
                     </div>
                   )}
                 </div>
