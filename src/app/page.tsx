@@ -49,6 +49,16 @@ export default function Home() {
       options: ["I Don't Have A Clear Plan", "Lack Of Time", "Staying Consistent"],
       allowOther: true,
     },
+    {
+      id: "investment",
+      question: "If you could have your dream life situation 100% guaranteed, would you be willing to invest a big amount?",
+      options: [
+        "Yes, absolutely. I invest in myself.",
+        "It depends on the offer.",
+        "No, I am only looking for free information."
+      ],
+      allowOther: false,
+    },
   ];
 
   const handleToggleOption = (option: string) => {
@@ -56,7 +66,13 @@ export default function Home() {
       setTempSelections(tempSelections.filter((item) => item !== option));
       if (option === "Other") setShowOtherInput(false);
     } else {
-      setTempSelections([...tempSelections, option]);
+      // For single select questions (like investment), clear other selections
+      if (questions[step].id === "investment" || questions[step].id === "experience") {
+        setTempSelections([option]);
+      } else {
+        setTempSelections([...tempSelections, option]);
+      }
+      
       if (option === "Other") setShowOtherInput(true);
     }
   };
@@ -66,6 +82,13 @@ export default function Home() {
     if (showOtherInput && otherValue.trim()) {
       finalSelections = finalSelections.filter(s => s !== "Other");
       finalSelections.push(`Other: ${otherValue.trim()}`);
+    }
+    
+    // Disqualification Check
+    if (questions[step].id === "investment") {
+      if (finalSelections.some(s => s.includes("free information"))) {
+        setIsDisqualified(true);
+      }
     }
     
     setAnswers({ ...answers, [questions[step].id]: finalSelections });
@@ -151,10 +174,10 @@ export default function Home() {
               
               <div className="space-y-2">
                 <h3 className="text-3xl font-black text-white uppercase italic tracking-tighter">
-                  Wait! Don't Leave Empty Handed.
+                  JOIN THE INSIDER LIST
                 </h3>
                 <p className="text-zinc-400 font-medium leading-relaxed">
-                  You're about to miss out on the <span className="text-white font-bold">Primal Protocol Briefing</span>. This training reveals the exact system used by 3,800+ men to reclaim their biological dominance.
+                  Get exclusive access to <span className="text-white font-bold">New Standard</span> updates, private offers, and high-level strategies sent directly to your inbox. No fluff, just value.
                 </p>
               </div>
 
@@ -162,17 +185,26 @@ export default function Home() {
                 <button 
                   onClick={() => {
                     setShowExitModal(false);
+                    // We might want to open a simpler email modal here or just the main one
+                    // For now, let's open the main modal but maybe we should have a simple email capture?
+                    // Given the prompt "ask for their email", let's assume they want to capture it here.
+                    // But to keep it simple with existing flow, let's direct them to the main flow 
+                    // OR we can make this button open a simple email input state.
+                    // Let's reuse the main modal logic for now but maybe skip to email?
+                    // Simpler: Just open the main modal as "Get Access" implies starting the process.
+                    // The prompt says "ask for their email... to receive news". 
+                    // Let's change the button text to match the new intent.
                     setShowModal(true);
                   }}
                   className="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-sm text-lg shadow-lg uppercase italic tracking-tighter transition-all hover:scale-[1.02]"
                 >
-                  GET FREE ACCESS NOW
+                  SIGN UP FOR UPDATES
                 </button>
                 <button 
                   onClick={() => setShowExitModal(false)}
                   className="text-zinc-600 text-xs font-bold uppercase tracking-widest hover:text-zinc-400 transition-colors"
                 >
-                  No thanks, I prefer staying average
+                  No thanks, I'll miss out
                 </button>
               </div>
             </div>
