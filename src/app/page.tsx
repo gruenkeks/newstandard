@@ -14,6 +14,7 @@ export default function Home() {
   const [tempSelections, setTempSelections] = useState<string[]>([]);
   const [otherValue, setOtherValue] = useState("");
   const [showOtherInput, setShowOtherInput] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   // Exit Intent Hook
   useEffect(() => {
@@ -366,25 +367,39 @@ export default function Home() {
           <div className="max-w-[1400px] w-full mx-auto grid lg:grid-cols-12 gap-8 lg:gap-24 items-center">
             
             {/* Left Column: Massive Video Element (Spans 7 columns) */}
-            <div className="lg:col-span-7 relative group w-full aspect-video bg-zinc-950 rounded-xl overflow-hidden border border-zinc-800 shadow-[0_0_100px_rgba(220,38,38,0.1)] cursor-pointer hover:border-red-600/50 transition-all duration-300">
-               <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-red-600 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity rounded-full scale-150" />
-                  <PlayCircle className="w-24 h-24 text-white relative z-10 drop-shadow-2xl group-hover:scale-110 transition-transform duration-300" />
-                </div>
-               </div>
-               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent pt-20 flex justify-between items-end">
-                 <div>
-                   <div className="flex items-center gap-2 mb-2">
-                     <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse" />
-                     
+            <div 
+              className="lg:col-span-7 relative group w-full aspect-video bg-zinc-950 rounded-xl overflow-hidden border border-zinc-800 shadow-[0_0_100px_rgba(220,38,38,0.1)] cursor-pointer hover:border-red-600/50 transition-all duration-300"
+              onClick={() => !isPlaying && setIsPlaying(true)}
+            >
+               {isPlaying ? (
+                 <video 
+                   src="/videos/VSL.mp4" 
+                   className="w-full h-full object-cover" 
+                   controls 
+                   autoPlay 
+                 />
+               ) : (
+                 <>
+                   <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-red-600 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity rounded-full scale-150" />
+                      <PlayCircle className="w-24 h-24 text-white relative z-10 drop-shadow-2xl group-hover:scale-110 transition-transform duration-300" />
+                    </div>
                    </div>
-                   <div className="text-white font-bold text-lg leading-tight">The New Standard Briefing</div>
-                 </div>
-                 <div className="bg-white/10 backdrop-blur-md border border-white/10 px-3 py-1 rounded text-xs font-mono text-white/90">
-                   12:45
-                 </div>
-               </div>
+                   <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent pt-20 flex justify-between items-end">
+                     <div>
+                       <div className="flex items-center gap-2 mb-2">
+                         <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse" />
+                         
+                       </div>
+                       <div className="text-white font-bold text-lg leading-tight">The New Standard Briefing</div>
+                     </div>
+                     <div className="bg-white/10 backdrop-blur-md border border-white/10 px-3 py-1 rounded text-xs font-mono text-white/90">
+                       12:45
+                     </div>
+                   </div>
+                 </>
+               )}
             </div>
 
             {/* Right Column: Copy & CTA (Spans 5 columns) */}
